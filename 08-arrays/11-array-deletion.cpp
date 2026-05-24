@@ -2,20 +2,19 @@
 
 using namespace std;
 
-int insertion(int arr[], int totalSize, int currSize, int num, int idx)
+int deletion(int arr[], int size, int idx)
 {
-    if (totalSize <= currSize)
+    if (size <= idx)
     {
         cout << "Invalid array size!" << endl;
         return 0;
     }
 
-    for (int i = totalSize - 1; i >= idx; i--)
+    for (int i = idx; i < size - 1; i++)
     {
-        arr[i] = arr[i - 1];
+        arr[i] = arr[i + 1];
     }
 
-    arr[idx] = num;
     return 1;
 }
 
@@ -32,10 +31,10 @@ int main()
 {
     int arr[10] = {1, 2, 3, 4, 5, 6};
     int totalSize = sizeof(arr) / sizeof(arr[0]);
-    int currentSize = 6;
-    insertion(arr, totalSize, currentSize, 7, 6);
-    currentSize++;
-    printArray(arr, currentSize);
+    int size = 6;
+    deletion(arr, size, 0);
+    size--;
+    printArray(arr, size);
 
     return 0;
 }
